@@ -1,5 +1,3 @@
-#!/bin/bash
-
 loadkeys ru
 setfont cyr-sun16
 
@@ -35,19 +33,21 @@ echo 'Создание разделов'
 
 echo 'Форматирование дисков'
 mkfs.ext4  /dev/sda1
-mkfs.ext4  /dev/sda2
+mkswap /dev/sda2 -L swap
+mkfs.ext4  /dev/sda3
 
 echo 'Монтирование дисков'
-mount /dev/sda2 /mnt
+mount /dev/sda3 /mnt
 mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
-mount /dev/sda2 /mnt/home
+swapon /dev/sda2
+mount /dev/sda3 /mnt/home
 
 echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel openssh mdadm --noconfirm
+pacstrap -i /mnt base base-devel openssh --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
