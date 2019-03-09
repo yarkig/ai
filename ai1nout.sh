@@ -15,6 +15,12 @@ echo 'Создание разделов'
   echo;
   echo;
   echo +100M;
+  
+  echo n;
+  echo;
+  echo;
+  echo;
+  echo +2048M;
 
   echo n;
   echo p;
@@ -47,4 +53,4 @@ echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 echo 'Входим в установленную систему'
-arch-chroot /mnt /bin/bash
+arch-chroot /mnt sh -c "$(curl -fsSL https://git.io/fhhE5)"
