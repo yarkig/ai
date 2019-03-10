@@ -19,7 +19,7 @@ echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 
 echo 'Настройка сети'
-systemctl enable dhcpcd@enp1s0f1.service
+systemctl enable dhcpcd@eth0.service
 
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
