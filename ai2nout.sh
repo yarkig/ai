@@ -1,8 +1,5 @@
-#!/bin/bash
-
 echo 'Прписываем имя компьютера'
 echo "home2" > /etc/hostname
-# ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo 'Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -18,9 +15,6 @@ export LANG=ru_RU.UTF-8
 echo 'Консольный шрифт и раскладка клавиатуры'
 echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
-
-# echo 'Настройка сети'
-# systemctl enable dhcpcd@enp1s0f1.service
 
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
@@ -43,29 +37,11 @@ passwd igor
 echo 'Устанавливаем SUDO'
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
+echo 'Ставим DE и остальное ПО'
+pacman -S xorg xorg-server xf86-video-intel xfce4 xfce4-goodies openssh networkmanager network-manager-applet mc screenfetch pavucontrol pulseaudio gvfs vlc ttf-liberation ttf-dejavu chromium --noconfirm
+
 echo 'Включим нужные службы:'
 systemctl enable sshd NetworkManager
-
-echo 'Установка AUR'
-sudo pacman -Syy
-sudo pacman -S git --noconfirm
-
-echo 'Ставим зависимость expac-git'
-git clone https://aur.archlinux.org/expac-git.git
-cd expac-git
-makepkg -si --noconfirm
-cd ..
-rm -rf expac-git
-
-git clone https://aur.archlinux.org/aurman.git
-cd aurman
-makepkg -si --noconfirm --skippgpcheck
-cd ..
-rm -rf aurman
-
-echo 'Ставим темы и иконки'
-yaourt -S numix-circle-icon-theme-git --noconfirm
-yaourt -S numix-frost-themes --noconfirm
 
 echo 'Выходим из окружения chrootexit'
 exit
