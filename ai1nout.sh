@@ -47,7 +47,7 @@ echo 'Выбор зеркал для загрузки. Ставим зеркал
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel openssh networkmanager network-manager-applet mc screenfetch pavucontrol pulseaudio xorg xorg-server xfce4 xfce4-goodies gvfs vlc --noconfirm
+pacstrap -i /mnt base base-devel openssh networkmanager network-manager-applet mc screenfetch pavucontrol pulseaudio xorg xorg-server xfce4 xfce4-goodies gvfs vlc ttf-liberation ttf-dejavu --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
