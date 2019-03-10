@@ -2,7 +2,6 @@
 
 echo 'Прписываем имя компьютера'
 echo "arch-vm" > /etc/hostname
-ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo 'Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -20,7 +19,7 @@ echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 
 echo 'Настройка сети'
-systemctl enable dhcpcd@eth0.service
+systemctl enable dhcpcd@enp1s0f1.service
 
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
