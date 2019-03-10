@@ -39,10 +39,10 @@ echo 'Выбор зеркал для загрузки. Ставим зеркал
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel openssh mdadm --noconfirm
+pacstrap -i /mnt base base-devel openssh mc --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 echo 'Входим в установленную систему'
-arch-chroot /mnt sh -c "$(curl -fsSL )"
+arch-chroot /mnt sh -c "$(curl -fsSL git.io/fhhQj)"
