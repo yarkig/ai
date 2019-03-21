@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'Прписываем имя компьютера'
-echo "arch-vm" > /etc/hostname
+echo "test1" > /etc/hostname
 
 echo 'Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
