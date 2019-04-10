@@ -1,4 +1,5 @@
 #!/bin/bash
+# sh -c "$(curl -fsSL git.io/fjqtp)"
 
 loadkeys ru
 setfont cyr-sun16
