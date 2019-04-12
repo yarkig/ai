@@ -18,9 +18,6 @@ echo 'Консольный шрифт и раскладка клавиатуры
 echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 
-echo 'Настройка сети'
-systemctl enable dhcpcd@enp3s0.service
-
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
 
@@ -43,7 +40,7 @@ echo 'Устанавливаем SUDO'
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 echo 'Включим ssh:'
-systemctl enable sshd
+systemctl enable sshd NetworkManager
 
 echo 'Выходим из окружения chrootexit'
 exit
