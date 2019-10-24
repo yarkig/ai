@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'Прписываем имя компьютера'
-echo "test1" > /etc/hostname
+echo "arch-vm" > /etc/hostname
 
 echo 'Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -17,9 +17,6 @@ export LANG=ru_RU.UTF-8
 echo 'Консольный шрифт и раскладка клавиатуры'
 echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
-
-echo 'Настройка сети'
-systemctl enable dhcpcd@enp0s3.service
 
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
@@ -44,6 +41,9 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 echo 'Включим ssh:'
 systemctl enable sshd
+
+echo 'Включим сеть:'
+systemctl enable NetworkManager
 
 echo 'Выходим из окружения chrootexit'
 exit
