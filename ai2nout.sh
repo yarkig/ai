@@ -1,5 +1,6 @@
 echo 'Прписываем имя компьютера'
 echo "home2" > /etc/hostname
+ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo 'Добавляем русскую локаль системы'
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
@@ -36,9 +37,6 @@ passwd igor
 
 echo 'Устанавливаем SUDO'
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
-
-echo 'Ставим DE и остальное ПО'
-pacman -S xorg xorg-server xf86-video-intel xfce4 xfce4-goodies openssh networkmanager network-manager-applet mc screenfetch pavucontrol pulseaudio gvfs vlc ttf-liberation ttf-dejavu chromium --noconfirm
 
 echo 'Включим нужные службы:'
 systemctl enable sshd NetworkManager
