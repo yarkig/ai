@@ -11,24 +11,19 @@ echo 'Создание разделов'
   echo n;
   echo;
   echo;
-  echo;
   echo +512M;
   echo t;
-  echo EF;
+  echo 1;
   
   echo n;
-  echo;
   echo;
   echo;
   echo +2048M;
 
   echo n;
-  echo p;
   echo;
   echo;
   echo;
-  echo a;
-  echo 1;
 
   echo w;
 ) | fdisk /dev/sda
