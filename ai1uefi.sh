@@ -13,6 +13,12 @@ echo 'Создание разделов'
   echo;
   echo;
   echo +100M;
+  
+  echo n;
+  echo;
+  echo;
+  echo;
+  echo +2048M;
 
   echo n;
   echo p;
@@ -27,22 +33,24 @@ echo 'Создание разделов'
 
 echo 'Форматирование дисков'
 mkfs.ext4  /dev/sda1
-mkfs.ext4  /dev/sda2
+mkswap /dev/sda2 -L swap
+mkfs.ext4  /dev/sda3
 
 echo 'Монтирование дисков'
-mount /dev/sda2 /mnt
+mount /dev/sda3 /mnt
 mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
-mount /dev/sda2 /mnt/home
+swapon /dev/sda2
+mount /dev/sda3 /mnt/home
 
 echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel linux linux-firmware openssh mc nano gvfs networkmanager network-manager-applet --noconfirm
+pacstrap -i /mnt base base-devel linux linux-firmware openssh mc nano gvfs networkmanager network-manager-applet xorg xorg-server xf86-video-intel xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu chromium --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 echo 'Входим в установленную систему'
-arch-chroot /mnt sh -c "$(curl -fsSL git.io/fhhQj)"
+arch-chroot /mnt sh -c "$(curl -fsSL https://git.io/fhhE5)"
