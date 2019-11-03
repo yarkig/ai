@@ -1,7 +1,5 @@
-#!/bin/bash
-
 echo 'Прписываем имя компьютера'
-echo "arch-vm" > /etc/hostname
+echo "home2" > /etc/hostname
 ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo 'Добавляем русскую локаль системы'
@@ -40,11 +38,8 @@ passwd igor
 echo 'Устанавливаем SUDO'
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
-echo 'Включим ssh:'
-systemctl enable sshd
-
-echo 'Включим сеть:'
-systemctl enable NetworkManager
+echo 'Включим нужные службы:'
+systemctl enable sshd NetworkManager
 
 echo 'Выходим из окружения chrootexit'
 exit
