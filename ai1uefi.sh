@@ -6,13 +6,15 @@ dd if=/dev/zero of=/dev/sda bs=32M status=progress
 
 echo 'Создание разделов'
 (
-  echo o;
+  echo g;
 
   echo n;
   echo;
   echo;
   echo;
-  echo +100M;
+  echo +512M;
+  echo t;
+  echo EF;
   
   echo n;
   echo;
@@ -32,7 +34,7 @@ echo 'Создание разделов'
 ) | fdisk /dev/sda
 
 echo 'Форматирование дисков'
-mkfs.ext4  /dev/sda1
+mkfs.vfat -F32 /dev/sda1
 mkswap /dev/sda2 -L swap
 mkfs.ext4  /dev/sda3
 
@@ -47,7 +49,7 @@ echo 'Выбор зеркал для загрузки. Ставим зеркал
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel linux linux-firmware openssh mc nano gvfs networkmanager network-manager-applet xorg xorg-server xf86-video-intel xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu chromium --noconfirm
+pacstrap -i /mnt base base-devel linux linux-firmware openssh mc nano gvfs networkmanager network-manager-applet xf86-video-intel xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu chromium --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
