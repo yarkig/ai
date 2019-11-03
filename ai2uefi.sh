@@ -21,10 +21,7 @@ echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
 
 echo 'Устанавливаем загрузчик'
-pacman -Syy
-pacman -S grub --noconfirm 
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+
 
 echo 'Устанавливаем пароль root'
 passwd
@@ -41,5 +38,5 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 echo 'Включим нужные службы:'
 systemctl enable sshd NetworkManager
 
-echo 'Выходим из окружения chrootexit'
-exit
+#echo 'Выходим из окружения chrootexit'
+#exit
