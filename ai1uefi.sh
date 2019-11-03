@@ -55,4 +55,4 @@ echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 echo 'Входим в установленную систему'
-arch-chroot /mnt sh -c "$(curl -fsSL https://git.io/fhhE5)"
+arch-chroot /mnt sh -c "$(curl -fsSL https://git.io/Je2fc)"
