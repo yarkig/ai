@@ -48,8 +48,8 @@ mkdir /etc/systemd/system/getty@tty1.service.d
 echo "[Service]" > /etc/systemd/system/getty@tty1.service.d/override.conf
 echo "ExecStart=" >> /etc/systemd/system/getty@tty1.service.d/override.conf
 echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" >> /etc/systemd/system/getty@tty1.service.d/override.conf
-echo "[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx" >> ~/.bash_profile
-echo "exec startxfce4" > ~/.xinitrc
+echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/igor/.bash_profile
+echo "exec startxfce4" > /home/igor/.xinitrc
 
 echo 'Выходим из окружения chrootexit'
 exit
