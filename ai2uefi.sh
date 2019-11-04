@@ -21,12 +21,12 @@ echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux
 
 echo 'Устанавливаем загрузчик'
-bootctl --path=/mnt/boot install
-echo "default arch" > /mnt/boot/loader/loader.conf
-echo "title Arch Linux" > /mnt/boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux" >> /mnt/boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img" >> /mnt/boot/loader/entries/arch.conf
-echo "options root=/dev/sda3 rw" >> /mnt/boot/loader/entries/arch.conf
+bootctl --path=/boot install
+echo "default arch" > /boot/loader/loader.conf
+echo "title Arch Linux" > /boot/loader/entries/arch.conf
+echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+echo "options root=/dev/sda3 rw" >> /boot/loader/entries/arch.conf
 
 echo 'Устанавливаем пароль root'
 passwd
