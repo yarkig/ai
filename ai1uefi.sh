@@ -19,6 +19,9 @@ echo 'Создание разделов'
   echo;
   echo;
   echo +2048M;
+  echo t;
+  echo 2;
+  echo 19;
 
   echo n;
   echo;
@@ -38,7 +41,6 @@ mount /dev/sda3 /mnt
 mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
 swapon /dev/sda2
-mount /dev/sda3 /mnt/home
 
 echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
 echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
