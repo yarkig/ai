@@ -1,0 +1,3 @@
+echo 'Ставим DE, драйвера и основные программы'
+pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium --noconfirm
+
