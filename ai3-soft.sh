@@ -19,9 +19,16 @@ sudo chsh -s /bin/zsh root
 
 echo 'Автозапуск XFCE4'
 sudo mkdir /etc/systemd/system/getty@tty1.service.d
-sudo echo "[Service]" > /etc/systemd/system/getty@tty1.service.d/override.conf
-sudo echo "ExecStart=" >> /etc/systemd/system/getty@tty1.service.d/override.conf
-sudo echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" >> /etc/systemd/system/getty@tty1.service.d/override.conf
+
+# echo "[Service]" > /etc/systemd/system/getty@tty1.service.d/override.conf
+echo "[Service]" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
+
+# echo "ExecStart=" >> /etc/systemd/system/getty@tty1.service.d/override.conf
+echo "ExecStart=" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
+
+# echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" >> /etc/systemd/system/getty@tty1.service.d/override.conf
+echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
+
 echo '[[ -f ~/.zshrc ]] && . ~/.zshrc' > /home/igor/.zprofile
 echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/igor/.zprofile
 echo "exec startxfce4" > /home/igor/.xinitrc
