@@ -1,12 +1,13 @@
 #echo 'Прогресс-бар в виде Пакмана, пожирающего пилюли'
-#sudo echo "ILoveCandy" >> /etc/pacman.conf
+#echo "ILoveCandy" >> /etc/pacman.conf
 
 echo 'Ставим DE, драйвера и основные программы'
 sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium --noconfirm
 
-echo 'Ставим AUR (yay)'
+echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
 sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
+yay -S pamac-aur --noconfirm
 
 echo 'Ставим темы и иконки'
 yay -S numix-frost-themes numix-circle-icon-theme-git --noconfirm
