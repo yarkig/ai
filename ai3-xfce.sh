@@ -6,7 +6,9 @@ sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goo
 
 echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
-sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
+(
+  echo;
+) | sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
 yay -S pamac-aur --noconfirm
 
 echo 'Ставим темы и иконки'
