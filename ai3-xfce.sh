@@ -14,6 +14,7 @@ yay -S numix-frost-themes numix-circle-icon-theme-git --noconfirm
 
 echo 'Ставим oh-my-zsh'
 yay -S oh-my-zsh-git --noconfirm
+sudo sed -ie 's/robbyrussell/bureau/' /usr/share/oh-my-zsh/zshrc
 cp /usr/share/oh-my-zsh/zshrc /home/igor/.zshrc
 sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
