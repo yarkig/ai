@@ -1,5 +1,6 @@
+read -p "Введите имя компьютера: " hostname
 echo 'Прписываем имя компьютера'
-echo "home2" > /etc/hostname
+echo $hostname > /etc/hostname
 ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo 'Добавляем русскую локаль системы'
