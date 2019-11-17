@@ -42,8 +42,8 @@ mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
 swapon /dev/sda2
 
-echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс'
-echo "Server = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс на первое место'
+sed -ie '1 iServer = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch' /etc/pacman.d/mirrorlist
 
 echo 'Установка основных пакетов'
 pacstrap -i /mnt base base-devel linux linux-firmware mc nano openssh networkmanager intel-ucode --noconfirm
