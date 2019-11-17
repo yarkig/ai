@@ -2,7 +2,7 @@ echo 'Прогресс-бар в виде Пакмана, пожирающего
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
 
 echo 'Ставим DE, драйвера и основные программы'
-sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium --noconfirm
+sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium xdg-user-dir --noconfirm
 
 echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
@@ -30,3 +30,15 @@ echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" | su
 echo '[[ -f ~/.zshrc ]] && . ~/.zshrc' > /home/igor/.zprofile
 echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/igor/.zprofile
 echo "exec startxfce4" > /home/igor/.xinitrc
+
+echo 'Создаем пользовательские директории'
+xdg-user-dirs-update
+
+echo 'Устанавливаем конфиг XFCE4'
+wget git.io/ai-conf.tar.gz
+wget git.io/ai-wp.tar.gz
+sudo rm -rf ~/.config
+sudo tar -xzf ai-conf.tar.gz -C ~/
+sudo tar -xzf ai-wp.tar.gz -C ~/
+sudo rm -rf ~/ai-conf.tar.gz
+sudo rm -rf ~/ai-wp.tar.gz
