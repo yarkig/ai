@@ -35,10 +35,8 @@ echo 'Создаем пользовательские директории'
 xdg-user-dirs-update
 
 echo 'Устанавливаем конфиг XFCE4'
-wget git.io/ai-conf.tar.gz
-wget git.io/ai-wp.tar.gz
-sudo rm -rf ~/.config
+wget git.io/ai-conf.tar.gz git.io/ai-wp.tar.gz
+sudo rm -rf ~/.config ~/Общедоступные ~/Видео ~/Музыка ~/Шаблоны
 sudo tar -xzf ai-conf.tar.gz -C ~/
 sudo tar -xzf ai-wp.tar.gz -C ~/
-sudo rm -rf ~/ai-conf.tar.gz
-sudo rm -rf ~/ai-wp.tar.gz
+sudo rm -rf ~/ai-conf.tar.gz ~/ai-wp.tar.gz
