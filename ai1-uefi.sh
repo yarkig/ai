@@ -2,7 +2,8 @@ loadkeys ru
 setfont cyr-sun16
 
 echo 'Очистка диска'
-dd if=/dev/zero of=/dev/sda bs=32M status=progress
+# dd if=/dev/zero of=/dev/sda bs=32M status=progress
+dd if=/dev/zero of=/dev/sda bs=512 count=1
 
 echo 'Создание разделов'
 (
