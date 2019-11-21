@@ -2,35 +2,35 @@ loadkeys ru
 setfont cyr-sun16
 
 echo 'Очистка диска'
-# dd if=/dev/zero of=/dev/sda bs=32M status=progress
+wipefs --all --force /dev/sda /dev/sda1 /dev/sda2 /dev/sda3
 dd if=/dev/zero of=/dev/sda bs=512 count=1
 
 echo 'Создание разделов'
 (
-  echo g;
+  echo o;
+  echo Y;
 
   echo n;
   echo;
   echo;
   echo +512M;
-  echo t;
-  echo 1;
+  echo EF00;
   
   echo n;
   echo;
   echo;
   echo +2048M;
-  echo t;
-  echo 2;
-  echo 19;
+  echo 8200;
 
   echo n;
   echo;
   echo;
   echo;
+  echo;
 
   echo w;
-) | fdisk /dev/sda
+  echo Y;
+) | gdisk /dev/sda
 
 echo 'Форматирование дисков'
 mkfs.vfat -F32 /dev/sda1
