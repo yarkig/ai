@@ -15,7 +15,9 @@ echo 'Ставим темы и расширения для Gnome'
 yay -S matcha-gtk-theme gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu --noconfirm
 wget gitlab.com/rastersoft/desktop-icons-ng/-/archive/master/desktop-icons-ng-master.tar.gz
 tar -xzf desktop-icons-ng-master.tar.gz
-sh ~/desktop-icons-ng-master/local_install.sh
+cd desktop-icons-ng-master
+sh local_install.sh
+cd -
 
 echo 'Ставим oh-my-zsh'
 yay -S oh-my-zsh-git --noconfirm
@@ -25,9 +27,8 @@ sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
-#echo 'Устанавливаем конфиг Gnome'
-#wget git.io/ai-conf.tar.gz git.io/ai-wp.tar.gz
-#sudo rm -rf ~/.config ~/Общедоступные ~/Видео ~/Музыка ~/Шаблоны
-#sudo tar -xzf ai-conf.tar.gz -C ~/
-#sudo tar -xzf ai-wp.tar.gz -C ~/
-#sudo rm -rf ~/ai-conf.tar.gz ~/ai-wp.tar.gz
+echo 'Устанавливаем конфиг Gnome'
+wget git.io/gnome-conf.tar.xz
+sudo rm -rf ~/.config
+sudo tar -xzf gnome-conf.tar.xz -C ~/
+sudo rm -rf ~/gnome-conf.tar.xz
