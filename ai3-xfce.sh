@@ -32,3 +32,5 @@ wget git.io/gnome-conf.tar.xz
 sudo rm -rf ~/.config
 sudo tar -xzf gnome-conf.tar.xz -C ~/
 sudo rm -rf ~/gnome-conf.tar.xz
+
+sudo systemctl enable gdm.service
