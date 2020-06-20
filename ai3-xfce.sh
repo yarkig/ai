@@ -2,7 +2,7 @@ echo 'Прогресс-бар в виде Пакмана, пожирающего
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
 
 echo 'Ставим DE, драйвера и основные программы'
-sudo pacman -S gnome screenfetch vlc ttf-liberation ttf-dejavu zsh papirus-icon-theme xcursor-breeze --noconfirm
+sudo pacman -S gnome screenfetch vlc ttf-liberation ttf-dejavu zsh papirus-icon-theme --noconfirm
 
 echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
