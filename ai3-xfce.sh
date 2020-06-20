@@ -2,7 +2,7 @@ echo 'Прогресс-бар в виде Пакмана, пожирающего
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
 
 echo 'Ставим DE, драйвера и основные программы'
-sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium xdg-user-dirs mtpfs gvfs-mtp --noconfirm
+sudo pacman -S gnome screenfetch vlc ttf-liberation ttf-dejavu zsh papirus-icon-theme xcursor-breeze --noconfirm
 
 echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
@@ -11,8 +11,11 @@ sudo pacman -Syu --noconfirm
 ) | sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
 yay -S pamac-aur --noconfirm
 
-echo 'Ставим темы и иконки'
-yay -S numix-frost-themes numix-circle-icon-theme-git --noconfirm
+echo 'Ставим темы и расширения для Gnome'
+yay -S matcha-gtk-theme gnome-shell-extension-dash-to-panel gnome-shell-extension-arc-menu --noconfirm
+wget gitlab.com/rastersoft/desktop-icons-ng/-/archive/master/desktop-icons-ng-master.tar.gz
+tar -xzf desktop-icons-ng-master.tar.gz
+sh ~/desktop-icons-ng-master/local_install.sh
 
 echo 'Ставим oh-my-zsh'
 yay -S oh-my-zsh-git --noconfirm
@@ -22,19 +25,7 @@ sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
-echo 'Автозапуск XFCE4'
-sudo mkdir /etc/systemd/system/getty@tty1.service.d
-echo "[Service]" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
-echo "ExecStart=" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
-echo "ExecStart=-/usr/bin/agetty --autologin igor --noclear %I 38400 linux" | sudo tee --append /etc/systemd/system/getty@tty1.service.d/override.conf > /dev/null
-echo '[[ -f ~/.zshrc ]] && . ~/.zshrc' > /home/igor/.zprofile
-echo '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx' >> /home/igor/.zprofile
-echo "exec startxfce4" > /home/igor/.xinitrc
-
-echo 'Создаем пользовательские директории'
-xdg-user-dirs-update
-
-echo 'Устанавливаем конфиг XFCE4'
+echo 'Устанавливаем конфиг Gnome'
 wget git.io/ai-conf.tar.gz git.io/ai-wp.tar.gz
 sudo rm -rf ~/.config ~/Общедоступные ~/Видео ~/Музыка ~/Шаблоны
 sudo tar -xzf ai-conf.tar.gz -C ~/
