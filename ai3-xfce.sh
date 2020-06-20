@@ -28,9 +28,9 @@ sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
 echo 'Устанавливаем конфиг Gnome'
-wget git.io/gnome-conf.tar.xz
+wget git.io/gnome-conf.tar.gz
 sudo rm -rf ~/.config
-sudo tar -xzf gnome-conf.tar.xz -C ~/
-sudo rm -rf ~/gnome-conf.tar.xz
+sudo tar -xzf gnome-conf.tar.gz -C ~/
+sudo rm -rf ~/gnome-conf.tar.gz
 
 sudo systemctl enable gdm.service
