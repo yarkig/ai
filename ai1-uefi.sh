@@ -20,7 +20,7 @@ echo 'Создание разделов'
   echo n;
   echo;
   echo;
-  echo +20480M;
+  echo +10240M;
   echo;
 
   echo n;
