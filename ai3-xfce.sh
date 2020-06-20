@@ -25,9 +25,9 @@ sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
-echo 'Устанавливаем конфиг Gnome'
-wget git.io/ai-conf.tar.gz git.io/ai-wp.tar.gz
-sudo rm -rf ~/.config ~/Общедоступные ~/Видео ~/Музыка ~/Шаблоны
-sudo tar -xzf ai-conf.tar.gz -C ~/
-sudo tar -xzf ai-wp.tar.gz -C ~/
-sudo rm -rf ~/ai-conf.tar.gz ~/ai-wp.tar.gz
+#echo 'Устанавливаем конфиг Gnome'
+#wget git.io/ai-conf.tar.gz git.io/ai-wp.tar.gz
+#sudo rm -rf ~/.config ~/Общедоступные ~/Видео ~/Музыка ~/Шаблоны
+#sudo tar -xzf ai-conf.tar.gz -C ~/
+#sudo tar -xzf ai-wp.tar.gz -C ~/
+#sudo rm -rf ~/ai-conf.tar.gz ~/ai-wp.tar.gz
