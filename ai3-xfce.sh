@@ -18,6 +18,7 @@ tar -xzf desktop-icons-ng-master.tar.gz
 cd desktop-icons-ng-master
 sh local_install.sh
 cd -
+sudo rm -rf ~/desktop-icons-ng-master ~/desktop-icons-ng-master.tar.gz
 
 echo 'Ставим oh-my-zsh'
 yay -S oh-my-zsh-git --noconfirm
@@ -27,9 +28,12 @@ sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
+echo 'Создаем пользовательские директории'
+xdg-user-dirs-update
+
 echo 'Устанавливаем конфиг Gnome'
 wget git.io/gnome-conf.tar.gz
-sudo rm -rf ~/.config
+sudo rm -rf ~/.config ~/Общедоступные ~/Шаблоны
 sudo tar -xzf gnome-conf.tar.gz -C ~/
 sudo rm -rf ~/gnome-conf.tar.gz
 
