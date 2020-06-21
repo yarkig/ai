@@ -33,4 +33,5 @@ sudo rm -rf ~/.config
 sudo tar -xzf gnome-conf.tar.gz -C ~/
 sudo rm -rf ~/gnome-conf.tar.gz
 
+echo 'Делаем автостарт службы DM'
 sudo systemctl enable gdm.service
