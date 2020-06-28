@@ -28,14 +28,14 @@ sudo cp /usr/share/oh-my-zsh/zshrc /root/.zshrc
 sudo chsh -s /bin/zsh igor
 sudo chsh -s /bin/zsh root
 
-echo 'Создаем пользовательские директории'
-xdg-user-dirs-update
+#echo 'Создаем пользовательские директории'
+#xdg-user-dirs-update
 
-echo 'Устанавливаем конфиг Gnome'
-wget git.io/gnome-conf.tar.gz
-sudo rm -rf ~/.config ~/Общедоступные ~/Шаблоны
-sudo tar -xzf gnome-conf.tar.gz -C ~/
-sudo rm -rf ~/gnome-conf.tar.gz
+#echo 'Устанавливаем конфиг Gnome'
+#wget git.io/gnome-conf.tar.gz
+#sudo rm -rf ~/.config ~/Общедоступные ~/Шаблоны
+#sudo tar -xzf gnome-conf.tar.gz -C ~/
+#sudo rm -rf ~/gnome-conf.tar.gz
 
 echo 'Делаем автостарт службы DM'
 sudo systemctl enable gdm.service
