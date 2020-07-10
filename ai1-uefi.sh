@@ -20,8 +20,8 @@ echo 'Создание разделов'
   echo n;
   echo;
   echo;
-  echo +30720M;
-  echo;
+  echo +2048M;
+  echo 8200;
 
   echo n;
   echo;
@@ -35,14 +35,14 @@ echo 'Создание разделов'
 
 echo 'Форматирование дисков'
 mkfs.vfat -F32 /dev/sda1
-mkfs.btrfs /dev/sda2
-mkfs.btrfs /dev/sda3
+mkswap /dev/sda2 -L swap
+mkfs.btrfs  /dev/sda3
 
 echo 'Монтирование дисков'
-mount /dev/sda2 /mnt
+mount /dev/sda3 /mnt
 mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
-mount /dev/sda3 /mnt/home
+swapon /dev/sda2
 
 echo 'Выбор зеркал для загрузки. Ставим зеркало от Яндекс на первое место'
 sed -ie '1 iServer = http://mirror.yandex.ru/archlinux/\$repo/os/\$arch' /etc/pacman.d/mirrorlist
@@ -51,7 +51,7 @@ echo 'Прогресс-бар в виде Пакмана, пожирающего
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel linux linux-firmware mc nano openssh networkmanager --noconfirm
+pacstrap -i /mnt base base-devel linux linux-firmware mc nano openssh networkmanager intel-ucode --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
