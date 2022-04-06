@@ -3,7 +3,7 @@ echo 'Прогресс-бар в виде Пакмана, пожирающего
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
 
 echo 'Ставим DE, драйвера и основные программы'
-sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium xdg-user-dirs mtpfs gvfs-mtp --noconfirm
+sudo pacman -S gvfs network-manager-applet xf86-video-intel xorg xfce4 xfce4-goodies screenfetch pavucontrol pulseaudio vlc ttf-liberation ttf-dejavu zsh telegram-desktop chromium xdg-user-dirs mtpfs gvfs-mtp papirus-icon-theme --noconfirm
 
 echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
@@ -12,8 +12,9 @@ sudo pacman -Syu --noconfirm
 ) | sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
 yay -S pamac-aur --noconfirm
 
-echo 'Ставим темы и иконки'
-yay -S numix-frost-themes numix-circle-icon-theme-git --noconfirm
+echo 'Ставим темы и курсор'
+yay -S numix-frost-themes breeze-default-cursor-theme --noconfirm
+# numix-circle-icon-theme-git 
 
 echo 'Ставим oh-my-zsh'
 yay -S oh-my-zsh-git --noconfirm
