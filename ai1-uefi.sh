@@ -14,13 +14,13 @@ echo 'Создание разделов'
   echo n;
   echo;
   echo;
-  echo +100M;
+  echo +200M;
   echo EF00;
   
   echo n;
   echo;
   echo;
-  echo +2048M;
+  echo +6144M;
   echo 8200;
 
   echo n;
