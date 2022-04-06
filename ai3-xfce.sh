@@ -9,7 +9,6 @@ echo 'Ставим AUR (yay) и pamac-aur'
 sudo pacman -Syu --noconfirm
 (
   echo;
-  echo;
 ) | sh -c "$(curl -fsSL git.io/yay-install.sh)" --noconfirm
 yay -S pamac-aur --noconfirm
 
