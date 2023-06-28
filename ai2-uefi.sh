@@ -26,9 +26,9 @@ echo 'Устанавливаем загрузчик'
 bootctl --path=/boot install
 echo "default arch" > /boot/loader/loader.conf
 echo "title Arch Linux" > /boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
+echo "linux /vmlinuz-linux-zen" >> /boot/loader/entries/arch.conf
 echo "initrd /amd-ucode.img" >> /boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
+echo "initrd /initramfs-linux-zen.img" >> /boot/loader/entries/arch.conf
 echo "options root=/dev/sda2 rw" >> /boot/loader/entries/arch.conf
 
 echo 'Устанавливаем пароль root'
