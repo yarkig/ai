@@ -47,4 +47,4 @@ echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 echo 'Входим в установленную систему'
-arch-chroot /mnt sh -c "$(curl -fsSL git.io/ai2-uefi.sh)"
+arch-chroot /mnt sh -c "$(curl -fsSL raw.githubusercontent.com/yarkig/ai/master/ai2-uefi.sh)"
