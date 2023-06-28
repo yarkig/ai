@@ -3,7 +3,7 @@ loadkeys ru
 setfont cyr-sun16
 
 echo 'Очистка диска'
-wipefs --all --force /dev/sda /dev/sda1 /dev/sda2 /dev/sda3
+wipefs --all --force /dev/sda /dev/sda1 /dev/sda2
 dd if=/dev/zero of=/dev/sda bs=512 count=1
 
 echo 'Создание разделов'
@@ -29,7 +29,7 @@ echo 'Создание разделов'
 
 echo 'Форматирование дисков'
 mkfs.vfat -F32 /dev/sda1
-mkfs.btrfs  /dev/sda2
+mkfs.f2fs  /dev/sda2
 
 echo 'Монтирование дисков'
 mount /dev/sda2 /mnt
@@ -38,9 +38,10 @@ mount /dev/sda1 /mnt/boot
 
 echo 'Прогресс-бар в виде Пакмана, пожирающего пилюли'
 sudo sed -ie '/^# Misc options/a ILoveCandy' /etc/pacman.conf
+sudo sed -ie '/^# Misc options/a ParallelDownloads = 5' /etc/pacman.conf
 
 echo 'Установка основных пакетов'
-pacstrap -i /mnt base base-devel linux linux-firmware mc nano openssh networkmanager amd-ucode --noconfirm
+pacstrap -i /mnt base base-devel linux-zen linux-firmware mc nano openssh networkmanager amd-ucode --noconfirm
 
 echo 'Настройка системы'
 genfstab -pU /mnt >> /mnt/etc/fstab
