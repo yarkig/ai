@@ -20,7 +20,7 @@ echo 'KEYMAP=ru' >> /etc/vconsole.conf
 echo 'FONT=cyr-sun16' >> /etc/vconsole.conf
 
 echo 'Создадим загрузочный RAM диск'
-mkinitcpio -p linux
+mkinitcpio -p linux-zen
 
 echo 'Устанавливаем загрузчик'
 bootctl --path=/boot install
