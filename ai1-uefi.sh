@@ -29,7 +29,7 @@ echo 'Создание разделов'
 
 echo 'Форматирование дисков'
 mkfs.vfat -F32 /dev/sda1
-mkfs.f2fs  /dev/sda2
+mkfs.btrfs  /dev/sda2
 
 echo 'Монтирование дисков'
 mount /dev/sda2 /mnt
